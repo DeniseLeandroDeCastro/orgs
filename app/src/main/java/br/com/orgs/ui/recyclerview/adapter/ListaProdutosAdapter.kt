@@ -16,7 +16,8 @@ class ListaProdutosAdapter(
 
     private val produtos = produtos.toMutableList()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) :
+        RecyclerView.ViewHolder(view) {
 
         fun vincula(produto: Produto) {
             val nome = itemView.findViewById<TextView>(R.id.produto_item_nome)
