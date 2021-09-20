@@ -48,7 +48,7 @@
             android:textSize="18sp"
             android:fontFamily="@font/montserrat"
             android:textStyle="bold"
-            tools:text="19.99"
+            tools:text="R$ 19.99"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:textColor="@android:color/holo_green_dark"
