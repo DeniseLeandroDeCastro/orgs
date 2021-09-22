@@ -8,14 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.orgs.R
 import br.com.orgs.model.Produto
-import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.*
 
 class ListaProdutosAdapter(
     private val context: Context,
     produtos: List<Produto>
-): RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
     private val produtos = produtos.toMutableList()
 
@@ -25,19 +22,12 @@ class ListaProdutosAdapter(
         fun vincula(produto: Produto) {
             val nome = itemView.findViewById<TextView>(R.id.produto_item_nome)
             nome.text = produto.nome
-
             val descricao = itemView.findViewById<TextView>(R.id.produto_item_descricao)
             descricao.text = produto.descricao
             val valor = itemView.findViewById<TextView>(R.id.produto_item_valor)
-            val valorEmMoeda: String = formataParaMoedaBrasileira(produto.valor)
-            valor.text = valorEmMoeda
+            valor.text = produto.valor.toPlainString()
         }
 
-        private fun formataParaMoedaBrasileira(valor: BigDecimal): String {
-            val formatador: NumberFormat = NumberFormat
-                .getCurrencyInstance(Locale("pt", "br"))
-            return formatador.format(valor)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -58,4 +48,5 @@ class ListaProdutosAdapter(
         this.produtos.addAll(produtos)
         notifyDataSetChanged()
     }
+
 }

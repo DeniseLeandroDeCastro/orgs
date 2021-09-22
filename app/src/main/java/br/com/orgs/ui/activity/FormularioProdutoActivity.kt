@@ -9,11 +9,11 @@ import br.com.orgs.dao.ProdutosDao
 import br.com.orgs.model.Produto
 import java.math.BigDecimal
 
-class FormularioProdutoActivity : AppCompatActivity() {
+class FormularioProdutoActivity :
+    AppCompatActivity(R.layout.activity_formulario_produto) {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formulario_produto)
-
         configuraBotaoSalvar()
     }
 
