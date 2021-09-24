@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cesta_de_frutas" />
+            app:srcCompat="@drawable/varias_frutas" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/formulario_produto_textinputlayout_nome"
@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:inputType="text"
                 android:hint="Nome" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:inputType="text"
                 android:hint="Descrição" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
+                android:inputType="numberDecimal"
                 android:hint="Valor" />
         </com.google.android.material.textfield.TextInputLayout>
 
