@@ -8,7 +8,9 @@ import br.com.orgs.R
 import br.com.orgs.dao.ProdutosDao
 import br.com.orgs.databinding.ActivityFormularioProdutoBinding
 import br.com.orgs.databinding.FormularioImagemBinding
+import br.com.orgs.extensions.tentaCarregarImagem
 import br.com.orgs.model.Produto
+import br.com.orgs.ui.dialog.FormularioImagemDialog
 import coil.load
 import java.math.BigDecimal
 
@@ -24,24 +26,8 @@ class FormularioProdutoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraBotaoSalvar()
-
         binding.activityFormularioProdutoImagem.setOnClickListener {
-            val bindingFormularioImagem = FormularioImagemBinding.inflate(layoutInflater)
-            bindingFormularioImagem.formularioImagemBotaoCarregar.setOnClickListener {
-                val url = bindingFormularioImagem.formularioImagemUrl.text.toString()
-                bindingFormularioImagem.formularioImagemImageview.load(url)
-            }
-
-            AlertDialog.Builder(this)
-                .setView(bindingFormularioImagem.root)
-                .setPositiveButton("Confirmar") { _, _ ->
-                    url = bindingFormularioImagem.formularioImagemUrl.text.toString()
-                    binding.activityFormularioProdutoImagem.load(url)
-                }
-                .setNegativeButton("Cancelar") { _, _ ->
-
-                }
-                .show()
+            FormularioImagemDialog(this).mostra()
         }
     }
 

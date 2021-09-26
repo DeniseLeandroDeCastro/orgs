@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.orgs.R
 import br.com.orgs.databinding.ProdutoItemBinding
+import br.com.orgs.extensions.tentaCarregarImagem
 import br.com.orgs.model.Produto
 import coil.load
 import java.math.BigDecimal
@@ -20,8 +21,8 @@ class ListaProdutosAdapter(
 
     private val produtos = produtos.toMutableList()
 
-    class ViewHolder(private val binding: ProdutoItemBinding):
-        RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(private val binding: ProdutoItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun vincula(produto: Produto) {
             val nome = binding.produtoItemNome
@@ -31,10 +32,9 @@ class ListaProdutosAdapter(
             val valor = binding.produtoItemValor
             val valorEmMoeda: String =
                 formataParaMoedaBrasileira(produto.valor)
-            valor.text = produto.valor.toPlainString()
             valor.text = valorEmMoeda
 
-            val visibilidade = if(produto.imagem != null) {
+            val visibilidade = if (produto.imagem != null) {
                 View.VISIBLE
             } else {
                 View.GONE
@@ -42,10 +42,7 @@ class ListaProdutosAdapter(
 
             binding.imageView.visibility = visibilidade
 
-            binding.imageView.load(produto.imagem) {
-                fallback(R.drawable.erro)
-                error(R.drawable.erro)
-            }
+            binding.imageView.tentaCarregarImagem(produto.imagem)
         }
 
         private fun formataParaMoedaBrasileira(valor: BigDecimal): String {
@@ -53,9 +50,7 @@ class ListaProdutosAdapter(
                 .getCurrencyInstance(Locale("pt", "br"))
             return formatador.format(valor)
         }
-
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(context)
         val binding = ProdutoItemBinding.inflate(inflater, parent, false)
@@ -74,5 +69,4 @@ class ListaProdutosAdapter(
         this.produtos.addAll(produtos)
         notifyDataSetChanged()
     }
-
 }
