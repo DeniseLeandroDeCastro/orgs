@@ -14,11 +14,14 @@
         android:id="@+id/formulario_imagem_imageview"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/varias_frutas"/>
+        app:srcCompat="@drawable/varias_frutas" />
 
     <Button
         android:id="@+id/formulario_imagem_botao_carregar"
