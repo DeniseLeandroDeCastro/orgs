@@ -2,16 +2,10 @@ package br.com.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import br.com.orgs.R
 import br.com.orgs.dao.ProdutosDao
 import br.com.orgs.databinding.ActivityListaProdutosBinding
-import br.com.orgs.ui.dialog.FormularioImagemDialog
 import br.com.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListaProdutosActivity : AppCompatActivity() {
 
@@ -26,16 +20,16 @@ class ListaProdutosActivity : AppCompatActivity() {
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
+
     }
 
     override fun onResume() {
         super.onResume()
         adapter.atualiza(dao.buscaTodos())
-
     }
 
     private fun configuraFab() {
-        val fab = findViewById<FloatingActionButton>(R.id.activity_lista_produtos_fab)
+        val fab = binding.activityListaProdutosFab
         fab.setOnClickListener {
             vaiParaFormularioProduto()
         }
@@ -47,7 +41,16 @@ class ListaProdutosActivity : AppCompatActivity() {
     }
 
     private fun configuraRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.activity_lista_produtos_recyclerView)
+        val recyclerView = binding.activityListaProdutosRecyclerView
         recyclerView.adapter = adapter
+        adapter.quandoClicaNoItem = {
+            val intent = Intent(
+                this,
+                DetalhesProdutoActivity::class.java
+            ).apply {
+                putExtra(CHAVE_PRODUTO, it)
+            }
+            startActivity(intent)
+        }
     }
 }
