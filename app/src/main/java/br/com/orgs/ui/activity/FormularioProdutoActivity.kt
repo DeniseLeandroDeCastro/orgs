@@ -19,7 +19,6 @@ class FormularioProdutoActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityFormularioProdutoBinding.inflate(layoutInflater)
     }
-
     private var url: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,13 +46,11 @@ class FormularioProdutoActivity : AppCompatActivity() {
     }
 
     private fun criaProduto(): Produto {
-        val campoNome = findViewById<EditText>(R.id.activity_formulario_produto_nome)
+        val campoNome = binding.activityFormularioProdutoNome
         val nome = campoNome.text.toString()
-
-        val campoDescricao = findViewById<EditText>(R.id.activity_formulario_produto_descricao)
+        val campoDescricao = binding.activityFormularioProdutoDescricao
         val descricao = campoDescricao.text.toString()
-
-        val campoValor = findViewById<EditText>(R.id.activity_formulario_produto_valor)
+        val campoValor = binding.activityFormularioProdutoValor
         val valorEmTexto = campoValor.text.toString()
         val valor = if (valorEmTexto.isBlank()) {
             BigDecimal.ZERO
@@ -66,7 +63,6 @@ class FormularioProdutoActivity : AppCompatActivity() {
             descricao = descricao,
             valor = valor,
             imagem = url
-
         )
     }
 }
