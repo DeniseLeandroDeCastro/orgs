@@ -40,8 +40,10 @@ class ListaProdutosAdapter(
             this.produto = produto
             val nome = binding.produtoItemNome
             nome.text = produto.nome
+
             val descricao = binding.produtoItemDescricao
             descricao.text = produto.descricao
+
             val valor = binding.produtoItemValor
             val valorEmMoeda: String = produto.valor
                 .formataParaMoedaBrasileira()
@@ -52,10 +54,9 @@ class ListaProdutosAdapter(
             } else {
                 View.GONE
             }
-
+            binding.imageView.tentaCarregarImagem(produto.imagem)
             binding.imageView.visibility = visibilidade
 
-            binding.imageView.tentaCarregarImagem(produto.imagem)
         }
     }
 

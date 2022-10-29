@@ -2,9 +2,13 @@ package br.com.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import br.com.orgs.R
 import br.com.orgs.dao.ProdutosDao
 import br.com.orgs.databinding.ActivityListaProdutosBinding
+import br.com.orgs.ui.dialog.FormularioImagemDialog
 import br.com.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
 
 class ListaProdutosActivity : AppCompatActivity() {
@@ -20,7 +24,6 @@ class ListaProdutosActivity : AppCompatActivity() {
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
-
     }
 
     override fun onResume() {
