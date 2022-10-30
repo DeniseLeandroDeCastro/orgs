@@ -70,7 +70,7 @@
             app:layout_constraintEnd_toStartOf="@+id/produto_item_nome"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/frutas"
+            app:srcCompat="@drawable/imagem_padrao"
             tools:srcCompat="@tools:sample/backgrounds/scenic"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

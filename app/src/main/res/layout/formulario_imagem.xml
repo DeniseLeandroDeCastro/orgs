@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/varias_frutas" />
+        app:srcCompat="@drawable/imagem_padrao" />
 
     <Button
         android:id="@+id/formulario_imagem_botao_carregar"
